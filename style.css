@@ -1,1 +1,525 @@
+/* ==========================================
+   智慧課表與天氣提醒系統 - 樣式表
+   ========================================== */
 
+/* ========== 全局樣式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50c878;
+    --warning-color: #ff6b6b;
+    --light-bg: #f8f9fa;
+    --dark-text: #2c3e50;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--dark-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== 標題區域 ========== */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* ========== 天氣區域 ========== */
+.weather-section {
+    padding: 30px;
+    background: var(--light-bg);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.weather-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.weather-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#weather-text {
+    flex: 1;
+    min-width: 250px;
+    font-size: 1.1rem;
+    color: var(--dark-text);
+    padding: 15px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+#remind-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-radius: 8px;
+    border-left: 4px solid var(--warning-color);
+    font-size: 0.95rem;
+    color: #d9480f;
+    font-weight: 500;
+}
+
+.location-selector {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.location-selector label {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.location-selector select {
+    padding: 10px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    background: white;
+}
+
+.location-selector select:hover,
+.location-selector select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+#refresh-btn {
+    padding: 10px 20px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#refresh-btn:hover {
+    background: #45b066;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(80, 200, 120, 0.3);
+}
+
+#refresh-btn:active {
+    transform: translateY(0);
+}
+
+/* ========== 課表區域 ========== */
+.schedule-section {
+    padding: 30px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.schedule-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.schedule-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 15px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.schedule-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.schedule-table th {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+.schedule-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    height: 60px;
+}
+
+.time-slot {
+    background: var(--light-bg);
+    font-weight: 600;
+    color: var(--primary-color);
+    width: 120px;
+}
+
+.schedule-cell {
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 6px;
+}
+
+.schedule-cell:hover {
+    background: #e3f2fd;
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+.schedule-cell:focus {
+    background: #bbdefb;
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+.lunch {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    font-weight: 600;
+    color: #d9480f;
+}
+
+.tip {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* ========== 待辦事項區域 ========== */
+.todo-section {
+    padding: 30px;
+}
+
+.todo-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.todo-container {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.todo-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+#todo-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#todo-input:hover,
+#todo-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+#add-todo-btn {
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+#add-todo-btn:hover {
+    background: #3d7bc4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+#add-todo-btn:active {
+    transform: translateY(0);
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+}
+
+.todo-item:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+}
+
+.todo-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--secondary-color);
+}
+
+.todo-item input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-item span {
+    flex: 1;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background: var(--warning-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+/* ========== 頁腳 ========== */
+footer {
+    background: var(--dark-text);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* ========== 響應式設計 ========== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .weather-section,
+    .schedule-section,
+    .todo-section {
+        padding: 20px;
+    }
+
+    .weather-container {
+        flex-direction: column;
+    }
+
+    #weather-text,
+    #remind-box {
+        flex: none;
+        width: 100%;
+    }
+
+    .location-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .location-selector select {
+        width: 100%;
+    }
+
+    .schedule-table {
+        font-size: 0.85rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 10px 8px;
+        height: auto;
+    }
+
+    .time-slot {
+        width: 80px;
+    }
+
+    .todo-input {
+        flex-direction: column;
+    }
+
+    #todo-input,
+    #add-todo-btn {
+        width: 100%;
+    }
+
+    .todo-item {
+        flex-wrap: wrap;
+    }
+
+    .delete-btn {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 10px;
+    }
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .weather-section,
+    .schedule-section,
+    .todo-section {
+        padding: 15px;
+    }
+
+    .schedule-section h2,
+    .weather-section h2,
+    .todo-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .schedule-table {
+        font-size: 0.75rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 8px 5px;
+    }
+
+    .time-slot {
+        width: 60px;
+        padding: 8px 5px;
+    }
+}
+
+/* ========== 動畫效果 ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-item {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ========== 滾動條樣式 ========== */
+.schedule-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.schedule-container::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 10px;
+}
+
+.schedule-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.schedule-container::-webkit-scrollbar-thumb:hover {
+    background: #3d7bc4;
+}
