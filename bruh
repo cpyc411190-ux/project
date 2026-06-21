@@ -1,0 +1,18 @@
+// 範例概念程式碼（非完整程式，供邏輯參考）
+const apiKey = '你的氣象署授權碼';
+const url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${apiKey}&locationName=臺北市`;
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+      // 1. 取出降雨機率 (PoP)
+      const rainChance = data.records.location[0].weatherElement[1].time[0].parameter.parameterName;
+      
+      // 2. 顯示在網頁上
+      document.getElementById('weather-text').innerText = `今日降雨機率：${rainChance}%`;
+      
+      // 3. 連動連鎖反應：如果下雨機率高，自動給予課表/待辦提醒
+      if(parseInt(rainChance) > 40) {
+          document.getElementById('remind-box').innerText = "⚠️ 降雨機率高，出門記得帶傘，注意通學安全！";
+      }
+  });
