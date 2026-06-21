@@ -10,7 +10,7 @@ const CONFIG = {
         TODOS: 'todos',
         WEATHER_UPDATE: 'lastWeatherUpdate'
     },
-    DEFAULT_LOCATION: '臺北市'
+    DEFAULT_LOCATION: '新竹縣'
 };
 
 // ========== 天氣相關函數 ==========
@@ -271,7 +271,7 @@ function escapeHtml(text) {
         '"': '&quot;',
         "'": '&#039;'
     };
-    return text.replace(/[&<>"']/g, m => map[m]);
+    return text.replace(/[&<>\"']/g, m => map[m]);
 }
 
 function showNotification(message) {
