@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧課表與天氣提醒系統</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 標題區域 -->
+        <header>
+            <h1>📚 智慧課表與天氣提醒系統</h1>
+            <p>結合天氣預報的個人課表管理應用</p>
+        </header>
+
+        <!-- 天氣區域 -->
+        <section class="weather-section">
+            <h2>⛅ 今日天氣預報</h2>
+            <div class="weather-container">
+                <div id="weather-text" class="weather-info">載入天氣中...</div>
+                <div id="remind-box" class="reminder-box"></div>
+            </div>
+            <div class="location-selector">
+                <label for="location">選擇地區：</label>
+                <select id="location">
+                    <option value="臺北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="臺南市">臺南市</option>
+                </select>
+                <button id="refresh-btn">🔄 更新天氣</button>
+            </div>
+        </section>
+
+        <!-- 課表區域 -->
+        <section class="schedule-section">
+            <h2>📖 每週課表</h2>
+            <div class="schedule-container">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>時間</th>
+                            <th>星期一</th>
+                            <th>星期二</th>
+                            <th>星期三</th>
+                            <th>星期四</th>
+                            <th>星期五</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-slot">08:00-09:00</td>
+                            <td contenteditable="true" class="schedule-cell">國文</td>
+                            <td contenteditable="true" class="schedule-cell">英文</td>
+                            <td contenteditable="true" class="schedule-cell">數學</td>
+                            <td contenteditable="true" class="schedule-cell">國文</td>
+                            <td contenteditable="true" class="schedule-cell">體育</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">09:10-10:10</td>
+                            <td contenteditable="true" class="schedule-cell">英文</td>
+                            <td contenteditable="true" class="schedule-cell">數學</td>
+                            <td contenteditable="true" class="schedule-cell">物理</td>
+                            <td contenteditable="true" class="schedule-cell">化學</td>
+                            <td contenteditable="true" class="schedule-cell">國文</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">10:20-11:20</td>
+                            <td contenteditable="true" class="schedule-cell">數學</td>
+                            <td contenteditable="true" class="schedule-cell">國文</td>
+                            <td contenteditable="true" class="schedule-cell">歷史</td>
+                            <td contenteditable="true" class="schedule-cell">英文</td>
+                            <td contenteditable="true" class="schedule-cell">藝術</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">12:00-13:00</td>
+                            <td colspan="5" class="lunch">午餐時間 🍽️</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">13:00-14:00</td>
+                            <td contenteditable="true" class="schedule-cell">物理</td>
+                            <td contenteditable="true" class="schedule-cell">化學</td>
+                            <td contenteditable="true" class="schedule-cell">英文</td>
+                            <td contenteditable="true" class="schedule-cell">數學</td>
+                            <td contenteditable="true" class="schedule-cell">地理</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">14:10-15:10</td>
+                            <td contenteditable="true" class="schedule-cell">化學</td>
+                            <td contenteditable="true" class="schedule-cell">物理</td>
+                            <td contenteditable="true" class="schedule-cell">數學</td>
+                            <td contenteditable="true" class="schedule-cell">國文</td>
+                            <td contenteditable="true" class="schedule-cell">班會</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tip">💡 提示：點擊課表格子可直接編輯課程內容</p>
+        </section>
+
+        <!-- 待辦事項區域 -->
+        <section class="todo-section">
+            <h2>✅ 待辦清單</h2>
+            <div class="todo-container">
+                <div class="todo-input">
+                    <input type="text" id="todo-input" placeholder="輸入今天要完成的事項...">
+                    <button id="add-todo-btn">➕ 新增</button>
+                </div>
+                <ul id="todo-list" class="todo-list">
+                    <li class="todo-item">
+                        <input type="checkbox">
+                        <span>完成數學作業</span>
+                        <button class="delete-btn">🗑️</button>
+                    </li>
+                    <li class="todo-item">
+                        <input type="checkbox">
+                        <span>準備英文考試</span>
+                        <button class="delete-btn">🗑️</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 頁腳 -->
+        <footer>
+            <p>© 2024 智慧課表系統 | 資料來源：中央氣象署開放資料平臺</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
